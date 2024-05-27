@@ -53,7 +53,7 @@
                               (Primitive)    (Non-Primitive)
                         -> Call by value      -> Call by Rference
 
-                        -> changes occurs      -> Changes occur in 
+                        -> changes occurs     -> Changes occur in 
                            in copy of var        original value of var
 
 
