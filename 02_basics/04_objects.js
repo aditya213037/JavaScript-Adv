@@ -42,3 +42,34 @@ console.log(Object.values(tinderUser)); //return all values with array datatype
 console.log(Object.entries(tinderUser)); //return key value pairs in array datatype.
 console.log(tinderUser.hasOwnProperty("isLoggedIn")); //check that element in objects or not.
 
+/*-------------------------- Object Destructuring -------------------------- */
+
+const JsUser = {
+    id:"123abc",
+    name : "aditya",
+    email : "ag@gmail.com",
+    mentor : "Hitesh Choudhary"
+}
+JsUser.email;
+const {mentor} = JsUser;   //Using in large projects
+console.log(mentor);
+
+const navbar = (section) => {            //Used in React js framework.
+
+}
+navbar(section = "IT-1")
+
+/* JSON Intro : API */
+ //Format
+ {
+    "name":"Aditya",
+    "id": "123abc",
+    "course":"js in hindi"
+ }
+[
+    {},
+
+    {},
+
+    {}
+]
