@@ -61,11 +61,11 @@ navbar(section = "IT-1")
 
 /* JSON Intro : API */
  //Format
- {
-    "name":"Aditya",
-    "id": "123abc",
-    "course":"js in hindi"
- }
+//  {
+//     "name":"Aditya",
+//     "id": "123abc",
+//     "course":"js in hindi"
+//  }
 [
     {},
 
