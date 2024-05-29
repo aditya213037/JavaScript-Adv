@@ -35,7 +35,7 @@ if(true){
     }
 
 }
-/* ----------------------- Interesting Case ------------------ */
+/* ----------------------- Interesting Case ---------------------------- */
 
 console.log(addingOne(5)); ///Doesn't give error
 function addingOne(num){
