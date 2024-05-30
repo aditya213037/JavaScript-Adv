@@ -43,6 +43,6 @@ const games = {
     'game2' : "AmongUS",
     'game3' : "Smashkart"
 }
-for (const [key,value] of games) {
-    // console.log(`${key} :- ${value}`);   /* NOT ITERABLE */
-}
+// for (const [key,value] of games) {
+//     // console.log(`${key} :- ${value}`);   /* NOT ITERABLE */
+// }
