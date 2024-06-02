@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:#212121; color: #fff;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //M-1
+    // document.getElementById('owl').onclick = function(){
+    //     alert('owl cicked');
+    // }
+
+    //addattachement()
+    //jQuery
+    
+    //console.log(e) gives many properties like : 
+     // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    //M-2
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log(e);   // e is object of event gives each and every details about the event occur.
+    //     console.log(e.target);  //gives details about element like id , src, attributes, etc.
+    // },false)      /*--------- // false : event propogation , it is by deafault. */
+                    /*----------------// false : event bubble;   true: event capture */
+
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     console.log('UI clicked'); //it executed after execution owl click event. //it is due to bydefault event progation : false
+    // })   
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log('Owl clicked');  //It executes first 
+
+    // })
+
+
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     console.log('UI clicked'); //it executed first  //it is due to event progation : true
+    // },true);
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log('Owl clicked');  //It executes after images (ui) element clicked
+
+    // },true);
+
+
+    document.getElementById('owl').addEventListener('click',function(e){
+        console.log(e.target);
+        e.stopPropagation();
+    })
+    
+    document.getElementById('google').addEventListener('click',function(e){
+        console.log(e.target);
+        e.preventDefault(); //prevent default process like opening the google link on clicking.
+    })
+    ///Removing the image from ui list.
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.parentNode);
+        // let removeIt = e.target.parentNode;  //if we click on list or bullets then all li will be removed.
+        // removeIt.remove();
+        console.log(e.target.tagName); //Give tag name of clicked element
+        
+        if(e.target.tagName === 'IMG'){
+            let removeIt = e.target.parentNode;
+            removeIt.remove();            //delete only the li clicked li element not wholw list.
+        }
+
+    })
+
+</script>
+</html>
