@@ -61,6 +61,39 @@ form.addEventListener('submit', function (e) {
   }
 });
 
+## solution by me
+
+const form = document.querySelector('form');
+// const height = parseInt(document.querySelector('#height').value) //Gives only empty value.
+
+form.addEventListener('submit' , function(e){
+  e.preventDefault(); //to prevent the sending content of form to server
+
+  const height = parseInt(document.querySelector('#height').value);  //taking height in intwger
+
+  const weight = parseInt(document.querySelector('#weight').value)   //weight in INT
+
+  const results = document.querySelector('#results');             //for storing reesult
+
+  if(height === '' || height < 0 || isNaN(height)){         //checking error or inappropriate value
+    results.innerHTML = `Please enter valid height ${height}`;
+
+  }else if(weight === '' || weight < 0 || isNaN(weight)){   //checking error or inappropriate value
+    results.innerHTML = ` Please enter valid weight ${weight}`;
+
+  }else{          //calculating BMI using formula
+    const bmi = ( weight / ((height * height)/10000)).toFixed(2);
+    results.innerHTML = ` <span>${bmi}</span>`;
+    if(bmi <= 18.6){
+      results.innerHTML = `${bmi} : Under Weight `;
+    }else if(bmi > 18.6 && bmi <24.9){
+      results.innerHTML = ` ${bmi} : Normal`;
+    }else{
+      results.innerHTML = ` ${bmi} : Over Weight`;
+    }
+  }
+})
+
 
 ```
 
