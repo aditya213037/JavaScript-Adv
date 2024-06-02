@@ -210,6 +210,102 @@ function newGame() {
 }
 
 
+## solution by me :
+
+let randomNumber = parseInt(Math.random() * 100 + 1);
+console.log(randomNumber);
+
+const submit = document.querySelector('#subt');
+const userInput = document.querySelector('#guessField');
+const prevSlot = document.querySelector('.guesses');
+const remaining = document.querySelector('.lastResult');
+const loworhigh = document.querySelector('.lowOrHi');
+const startover = document.querySelector('.resultParas')
+
+let prevGuesses = [];
+let numGuesses = 1;
+const p = document.createElement('p');
+
+let playGame = true;
+
+if(playGame){
+  
+  submit.addEventListener('click',function(e){
+    e.preventDefault();
+    const guess = parseInt(userInput.value);
+    console.log(guess);
+    validateGuess(guess);
+  })
+}
+
+function validateGuess(guess){
+  if(isNaN(guess)){
+    alert('Please enter valid number');
+  }else if(guess > 100){
+    alert('Enter the number less than 100');
+  }else if(guess < 1){
+    alert('Enter the number greater than 1');
+  }else{
+    prevGuesses.push(guess);
+    if(numGuesses === 10){
+      displayGuess(guess);
+      displayMessage(`Game Over!! Number:${randomNumber}`);
+      console.log('STOP');
+      endGame();
+    }else{
+      displayGuess(guess);
+      checkGuess(guess);
+    }
+  }
+}
+
+function checkGuess(guess){
+  if(guess === randomNumber){
+    displayMessage(`You guessed the number coreectly.`)
+    endGame();
+  }else if(guess > randomNumber){
+    displayMessage('You guessed very High number')
+  }else{
+    displayMessage('You guessed very LOW number');
+  }
+}
+
+function displayGuess(guess){
+  userInput.value = '';
+  prevSlot.innerHTML += `${guess}, `;
+  numGuesses++;
+  remaining.innerHTML = `${11-numGuesses}`;
+}
+
+function displayMessage(message){
+  loworhigh.innerHTML = `<h2>${message}</h2>`;
+}
+
+function endGame(){
+  userInput.value = '';
+  userInput.setAttribute('disabled','');
+  p.classList.add('button');
+  p.innerHTML = '<h2 id="nGame" style = "cursor : pointer;">Start new game</h2>';
+  startover.appendChild(p);
+  playGame = false;
+  newGame();
+}
+
+function newGame(){
+  const newGuess = document.querySelector('#nGame');
+  newGuess.addEventListener('click',function(e){
+    userInput.value='';
+    userInput.removeAttribute('disabled');
+    startover.removeChild(p);
+    numGuesses = 1;
+    prevGuesses = [];
+    prevSlot.innerHTML = '';
+    remaining.innerHTML = `${11-numGuesses}`;
+    randomNumber = parseInt(Math.random() * 100 + 1);
+  })
+}
+
+
 ```
 
 
