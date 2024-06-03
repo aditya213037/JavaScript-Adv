@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASYNC Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1>Chai aur Code</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    const repeatI = function(){
+        console.log('Aditya');
+        
+    }
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = 'best JS mentor';
+    }
+    const vari = setTimeout(changeText,2000);
+    
+    //to stop the setTime out method
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(vari);
+    })
+    
+</script>
+</html>
