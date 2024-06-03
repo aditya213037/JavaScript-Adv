@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+0	UNSENT	Client has been created. open() not called yet.<br>
+1	OPENED	open() has been called.<br>
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.<br>
+3	LOADING	Downloading; responseText holds partial data.<br>
+4	DONE	The operation is complete.<br>
+
+<button id="card">Create Card</button>
+
+</body>
+<script>
+
+    const button = document.getElementById('card');
+    
+    const creatCard = function(){
+        const div = document.createElement('div');
+        div.style.border = '2px solid white'
+        div.style.backgroundColor = '#000000';
+        div.style.height = '600px'
+        div.style.width = '520px'
+        div.style.display = 'flex'
+        div.style.flexFlow = 'column'
+        div.style.alignItems = 'center'
+        div.innerHTML = `<h1 id='heading' style="text-align:centre;">Hitesh Chaudhary </h1>
+        <img src="${imgURl}" alt="image">
+        <h3 id='followers'>Followers:${followers}</h3>`;
+
+        document.body.appendChild(div);
+    }
+    button.addEventListener('click',creatCard);
+
+
+    let imgURl;
+    let followers;
+    const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+    const xhr = new XMLHttpRequest();    //create XMLHTTPrequest object
+    xhr.open('GET' , requestURL);        //open a message
+    xhr.onreadystatechange = function(){    //reponse from reciever 
+        console.log(xhr.readyState);
+        // console.log(this.responseText);
+        if(xhr.readyState === 4){            //response is in string format
+            const reponseReq = JSON.parse(this.responseText); //converts string into JSON format.
+            console.log(typeof reponseReq);     //gives object type
+            followers = reponseReq.followers;
+            console.log(followers);   //recieved response
+            
+            imgURl = reponseReq.avatar_url;
+            console.log(imgURl);
+            
+        }
+    }
+    
+    xhr.send();
+
+</script>
+</html>
